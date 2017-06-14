@@ -1,6 +1,6 @@
 # letterboxd-count-by-director
 
-A small utility script that, given an exported [Letterboxd](letterboxd.com) user data file, outputs a text file with directors grouped by the count of films directed by them that the user has watched:
+A small utility script that, given an exported [Letterboxd](http://letterboxd.com) user data file, outputs a text file with directors grouped by the count of films directed by them that the user has watched:
 
 ```
 15 films (1 director):
@@ -13,6 +13,7 @@ Lars von Trier
 Wes Anderson
 Stanley Kubrick
 Sion Sono
+
 (and so on, and so forth...)
 ```
 
@@ -21,6 +22,6 @@ The script gets the director(s) of a film by scraping its Letterboxd page. It st
 Tested with Python 3.6.1 on Arch GNU/Linux.
 
 ## Usage
-1. Export your user data from [Letterboxd settings](https://letterboxd.com/settings/) ``IMPORT & EXPORT -> EXPORT YOUR DATA``
-2. Run the script: ``python letterboxd_count_by_director.py path/to/downloaded_data_file.zip``
-3. See ``output.txt`` for results
+1. Export your user data from [Letterboxd settings](https://letterboxd.com/settings/): ``IMPORT & EXPORT -> EXPORT YOUR DATA``.
+2. Run the script: ``python letterboxd_count_by_director.py path/to/downloaded_data_file.zip``.
+3. See ``output.txt`` for results.
