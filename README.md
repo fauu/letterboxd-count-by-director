@@ -22,6 +22,6 @@ The script gets the director(s) of a film by scraping its Letterboxd page. It st
 Tested with Python 3.6.1 on Arch GNU/Linux.
 
 ## Usage
-1. Export your user data from [Letterboxd settings](https://letterboxd.com/settings/data/).
+1. Export your user data from [Letterboxd settings page](https://letterboxd.com/settings/data/).
 2. Run the script: ``python letterboxd_count_by_director.py path/to/downloaded_data_file.zip``.
 3. See ``output.txt`` for results.
