@@ -17,9 +17,9 @@ REQUEST_DELAY_SECONDS = 0.5
 
 
 def fetch_director(slug):
-    print("Fetching director for '{0}'... ".format(slug), end="")
+    print("Fetching director for '{}'... ".format(slug), end="")
 
-    url = "https://letterboxd.com/film/{0}/".format(slug)
+    url = "https://letterboxd.com/film/{}/".format(slug)
     content = urllib.request.urlopen(url).read().decode('utf-8')
 
     match = re.search(r"twitter:data1\" content=\"(.*)\"", content)
@@ -51,7 +51,7 @@ def process_watched_data(reader, cache):
 
     slugs = get_slugs(reader)
 
-    print("Processing {0} films...".format(len(slugs)))
+    print("Processing {} films...".format(len(slugs)))
 
     for slug in slugs:
         director_entry = None
@@ -79,7 +79,7 @@ def read_cache(reader):
         director = entry[1]
         cache[slug] = director
 
-    print("Read {0} entries from cache file: '{1}'".format(len(cache), CACHE_FILENAME))
+    print("Read {} entries from cache file: '{}'".format(len(cache), CACHE_FILENAME))
 
     return cache
 
@@ -92,7 +92,7 @@ def write_cache(cache, cache_additions):
         for slug, director in cache.items():
             cache_writer.writerow([slug, director])
 
-    print("Wrote {0} entries to cache file: '{1}'".format(len(cache), CACHE_FILENAME))
+    print("Wrote {} entries to cache file: '{}'".format(len(cache), CACHE_FILENAME))
 
 
 def get_last_initial(full_name):
@@ -117,14 +117,14 @@ def write_output(film_counts):
             num_directors = len(group)
             director_noun = "directors" if num_directors > 1 else "director"
 
-            header = "{0} {1} ({2} {3}):\n".format(count, film_noun, num_directors, director_noun)
+            header = "{} {} ({} {}):\n".format(count, film_noun, num_directors, director_noun)
             output_file.write(header)
 
             for director_with_count in group:
-                output_file.write("{0}\n".format(get_director(director_with_count)))
+                output_file.write("{}\n".format(get_director(director_with_count)))
             output_file.write("\n")
 
-    print("Wrote output to file: '{0}'".format(OUT_FILENAME))
+    print("Wrote output to file: '{}'".format(OUT_FILENAME))
 
 
 def process(data_filename):
@@ -148,9 +148,9 @@ def process(data_filename):
             write_cache(cache, cache_additions)
             write_output(film_counts)
     except FileNotFoundError:
-        print("Could not open file: '{0}'".format(data_filename), file=sys.stderr)
+        print("Could not open file: '{}'".format(data_filename), file=sys.stderr)
     except (zipfile.BadZipFile, KeyError):
-        print("'{0}' is not a valid Letterboxd data file".format(data_filename), file=sys.stderr)
+        print("'{}' is not a valid Letterboxd data file".format(data_filename), file=sys.stderr)
 
 
 def main(argv=None):
